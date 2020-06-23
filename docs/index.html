@@ -1,12 +1,21 @@
 <html>
   <body>
     <script>
-      
       let type = window.location.search.replace(/[^\w]/, "");
       if (type.length > 0) {
          let hash = window.location.hash.replace(/[^\w]/, "")
           if (hash.length > 0) {
-            window.location.replace("flxloopsy://"+type+"/"+hash);
+            if (type == "trx") {
+              window.location.replace("flxloopsy://"+type+"/"+hash);              
+              setTimeout(function () {
+                  window.location.replace("https://apps.apple.com/app/id1513460317"); 
+              },3000);
+              
+            }
+            else if (type == "bww") {
+              window.location.replace("loopsy://"+type+"/"+hash);
+            }
+
           }
       }
 
