@@ -1,6 +1,8 @@
 <html>
+<head>
+</head>
   <body>
-    <script>
+    <script>      
       let type = window.location.search.replace(/[^\w]/, "");
       if (type.length > 0) {
          let hash = window.location.hash.replace(/[^\w]/, "")
@@ -10,14 +12,30 @@
               setTimeout(function () {
                   window.location.replace("https://apps.apple.com/app/id1513460317"); 
               },3000);
-              
             }
             else if (type == "bww") {
               window.location.replace("loopsy://"+type+"/"+hash);
             }
-
           }
       }
+      
+      (function() {
+    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = `favicon_${type}.ico`;
+    document.getElementsByTagName('head')[0].appendChild(link);
+        
+    var meta = document.querySelector("meta[name*='description']") || document.createElement('meta');
+    meta.name = "description";
+    if (type == "trx"){
+       meta.content = "Trx exercises and workout plan";
+    }
+    else {
+       meta.content = "Fitness exercises and workout plan";
+    }
+    document.getElementsByTagName('head')[0].appendChild(link);
+})();
 
       
       
