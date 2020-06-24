@@ -3,21 +3,33 @@
 </head>
   <body>
     <script>      
-      let type = window.location.search.replace(/[^\w]/, "");
-      if (type.length > 0) {
-         let hash = window.location.hash.replace(/[^\w]/, "")
-          if (hash.length > 0) {
-            if (type == "trx") {
-              window.location.replace("flxloopsy://"+type+"/"+hash);              
-              setTimeout(function () {
-                  window.location.replace("https://apps.apple.com/app/id1513460317"); 
-              },3000);
-            }
-            else if (type == "bww") {
-              window.location.replace("loopsy://"+type+"/"+hash);
-            }
-          }
+      
+      function openApp(scheme, type, hash, fallback){
+        if (scheme.length > 0 && type.length > 0 hash.length > 0) {
+          window.location.replace(`${scheme+type}/${hash}`);              
+        }
+        
+        setTimeout(function () {
+            window.location.replace(fallback); 
+        },3000);
       }
+      
+      let type = window.location.search.replace(/[^\w]/, "");
+      let hash = window.location.hash.replace(/[^\w]/, "")
+      var scheme = "flxloopsy://";
+      var app_url = "https://apps.apple.com/app/id1513460317";
+
+        if (type == "trx") {
+          scheme = "flxloopsy://";
+          app_url = "https://apps.apple.com/app/id1513460317";
+        }
+        else if (type == "bww") {
+          scheme = "loopsy://";
+          app_url = "https://apps.apple.com/app/1520188807";
+        }
+
+      openApp(scheme,type,hash, app_url);
+
       
       (function() {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
