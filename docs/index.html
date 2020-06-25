@@ -5,7 +5,7 @@
     <script>      
       
       function openApp(scheme, type, hash, fallback){
-        if (scheme.length > 0 && type.length > 0 hash.length > 0) {
+        if (scheme.length > 0 && type.length > 0 && hash.length > 0) {
           window.location.replace(`${scheme+type}/${hash}`);              
         }
         
